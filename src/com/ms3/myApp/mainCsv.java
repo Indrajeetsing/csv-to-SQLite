@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import com.opencsv.CSVReader;
 /**
@@ -33,10 +36,17 @@ public class mainCsv
 
 		try (CSVReader reader = new CSVReader(new FileReader("ms3Interview.csv"), ','); )
 		{
+			Logger logger = Logger.getLogger("MyLog");  
+		    FileHandler fh; 
+			fh = new FileHandler("MyLogFile.log");  
+	        logger.addHandler(fh);
+	        SimpleFormatter formatter = new SimpleFormatter();  
+	        fh.setFormatter(formatter);  
 				String sql = "Insert into X (A, B, C, D, E, F, G, H, I, J) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement ps = mainCsv.dbConnector().prepareStatement(sql);
 				String[] rowData = null;
 				int i = 0;
+				 
 				while((rowData = reader.readNext()) != null)
 				{
 					int dataIndex = 0;
@@ -50,7 +60,7 @@ public class mainCsv
 							if (i % 1000 == 0)// inserting when we have 100 rows
 								ps.executeBatch();
 						} else {
-							System.out.println("Not found matching column for " + data);
+							logger.info("Not found matching column for " + data);  
 						}
 							
 							dataIndex++;
