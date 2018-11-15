@@ -11,13 +11,13 @@
 6. Go to cmd where your sqlite is running type .open company.db  then .tables to see all the tables you sbould be seeing table X created there.
 7. Now enter select * from X; It would display all the data. (Run .mode column to see data in form of columns)
 
-Tools I have Used to develop this application - 
-Windows 10
-Eclipse 2018-09 - https://www.eclipse.org/downloads/
-JAVA SE-1.8
-Sqlite sqlite-tools-win32-x86-3250300
-Libraries.jars 
-SQlite-JDBC-3.23 - https://bitbucket.org/xerial/sqlite-jdbc/downloads/, 
-Opencsv-4.3.2 - https://sourceforge.net/projects/opencsv/files/latest/download, 
-commons-langs3-3.8 - https://commons.apache.org/proper/commons-lang/download_lang.cgi
+#Tools I have Used to develop this application - 
+- Windows 10
+- Eclipse 2018-09 - https://www.eclipse.org/downloads/
+- JAVA SE-1.8
+- Sqlite sqlite-tools-win32-x86-3250300
+- Libraries.jars 
+  - SQlite-JDBC-3.23 - https://bitbucket.org/xerial/sqlite-jdbc/downloads/, 
+  - Opencsv-4.3.2 - https://sourceforge.net/projects/opencsv/files/latest/download, 
+  - commons-langs3-3.8 - https://commons.apache.org/proper/commons-lang/download_lang.cgi
 
