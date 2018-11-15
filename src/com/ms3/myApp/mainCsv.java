@@ -22,7 +22,7 @@ public class mainCsv
 		public static Connection dbConnector() {
 			 try {
 				 Class.forName("org.sqlite.JDBC");
-				 Connection conn =  DriverManager.getConnection("JDBC:sqlite:C:\\Users\\imandloi\\Desktop\\SQLite\\sqlite-tools-win32-x86-3250300\\company.db");
+				 Connection conn =  DriverManager.getConnection("JDBC:sqlite:sqlite-tools-win32-x86-3250300\\company.db");
 				 return conn;
 			 } catch(Exception e) {
 				 return null;
@@ -39,17 +39,21 @@ public class mainCsv
 				int i = 0;
 				while((rowData = reader.readNext()) != null)
 				{
-					System.out.println(rowData);
+					int dataIndex = 0;
 					for (String data : rowData)
 					{
+						if (dataIndex < 10) {
 							ps.setString((i % 10) + 1, data);
-							System.out.println(i);
-							System.out.println(data);
 							if (++i % 10 == 0)// adding batch after every 10 c0lumns/ 1 row
-									ps.addBatch();
+								ps.addBatch();
 
 							if (i % 1000 == 0)// inserting when we have 100 rows
-									ps.executeBatch();
+								ps.executeBatch();
+						} else {
+							System.out.println("Not found matching column for " + data);
+						}
+							
+							dataIndex++;
 					}
 					
 				}
