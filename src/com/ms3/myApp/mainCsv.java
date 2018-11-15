@@ -60,7 +60,7 @@ public class mainCsv
 							if (i % 1000 == 0)// inserting when we have 100 rows
 								ps.executeBatch();
 						} else {
-							logger.info("Not found matching column for " + data);  
+							logger.info(data);  
 						}
 							
 							dataIndex++;
